@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://jpsaperp09.local:8080/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://jpsaperp09.local:8080/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://jpsaperp09.local:8080/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://jpsaperp09.local:8080/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://jpsaperp09.local:8080/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGTW_USERID_REG_GY2_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZV_TEST_USERID_REGType" sap:label="CDS view for ID registeration test Gao" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserID"/>
+                    <PropertyRef Name="ValidStart"/>
+                </Key>
+                <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="User ID(GTEST)" sap:quickinfo="Character Field with Length 10"/>
+                <Property Name="ValidStart" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid Start"/>
+                <Property Name="ValidEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid End"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="81" sap:label="Name"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="40" sap:label="Department"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="7" sap:label="Country"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="40" sap:label="Email"/>
+                <Property Name="Tel" Type="Edm.String" MaxLength="20" sap:label="Tel"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status"/>
+                <Property Name="CreateDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CreateDate" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="ChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ChangeDate" sap:quickinfo="Date of Last Change"/>
+                <Property Name="IsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="IsDeactive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="IsAdd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="IsDelete" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+            </EntityType>
+            <EntityContainer Name="ZGTW_USERID_REG_GY2_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZV_TEST_USERID_REG" EntityType="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <FunctionImport Name="Active" ReturnType="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" EntitySet="ZV_TEST_USERID_REG" m:HttpMethod="PUT" sap:action-for="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" sap:applicable-path="IsActive">
+                    <Parameter Name="UserID" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ValidStart" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                </FunctionImport>
+                <FunctionImport Name="De-active" ReturnType="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" EntitySet="ZV_TEST_USERID_REG" m:HttpMethod="PUT" sap:action-for="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" sap:applicable-path="">
+                    <Parameter Name="UserID" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ValidStart" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                </FunctionImport>
+                <FunctionImport Name="Add" ReturnType="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" EntitySet="ZV_TEST_USERID_REG" m:HttpMethod="PUT" sap:action-for="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" sap:applicable-path="IsActive">
+                    <Parameter Name="UserID" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ValidStart" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                </FunctionImport>
+                <FunctionImport Name="Delete" ReturnType="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" EntitySet="ZV_TEST_USERID_REG" m:HttpMethod="PUT" sap:action-for="ZGTW_USERID_REG_GY2_SRV.ZV_TEST_USERID_REGType" sap:applicable-path="IsDelete">
+                    <Parameter Name="UserID" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ValidStart" Type="Edm.DateTime" Mode="In" Precision="0"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="ZGTW_USERID_REG_GY2_SRV.ZGTW_USERID_REG_GY2_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://jpsaperp09.local:8080/sap/opu/odata/sap/ZGTW_USERID_REG_GY2_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://jpsaperp09.local:8080/sap/opu/odata/sap/ZGTW_USERID_REG_GY2_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
