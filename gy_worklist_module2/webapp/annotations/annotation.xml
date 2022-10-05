@@ -1,18 +1,98 @@
-<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="/sap/opu/odata/sap/ZGTW_USERID_REG_GY2_SRV/$metadata">
-        <edmx:Include Namespace="ZGTW_USERID_REG_GY2_SRV" Alias="SAP"/>
-    </edmx:Reference>
-    <edmx:DataServices>
-        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
-        </Schema>
-    </edmx:DataServices>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">							
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">							
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>				
+    </edmx:Reference>							
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZGTW_USERID_REG_GY2_SRV/$metadata">							
+        <edmx:Include  Namespace="ZGTW_USERID_REG_GY2_SRV" Alias="SAP"/>					
+    </edmx:Reference>							
+    <edmx:DataServices>							
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">							
+            <Annotations Target="SAP.ZV_TEST_USERID_REGType">							
+                <Annotation Term="UI.SelectionVariant" Qualifier="All">							
+                    <Record Type="UI.SelectionVariantType" >							
+                        <PropertyValue Property="Text" String="All users"/>							
+                    </Record>							
+                </Annotation>							
+                <Annotation Term="UI.SelectionVariant" Qualifier="Inactive">							
+                    <Record Type="UI.SelectionVariantType">							
+                        <PropertyValue Property="Text" String="Inactive users"/>					
+                        <PropertyValue Property="SelectOptions">							
+                            <Collection>							
+                                <Record Type="UI.SelectOptionType">							
+                                    <PropertyValue Property="PropertyName" PropertyPath="Status"/>					
+                                    <PropertyValue Property="Ranges">							
+                                        <Collection >							
+                                            <Record Type="UI.SelectionRangeType">							
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>					
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>					
+                                                <PropertyValue Property="Low" String="I"/>							
+                                            </Record>							
+                                        </Collection>							
+                                    </PropertyValue>                                                          							
+                                </Record>                          							
+                            </Collection>                      							
+                        </PropertyValue>                 							
+                    </Record>							
+                </Annotation>							
+                <Annotation Term="UI.LineItem">							
+                    <Collection>							
+                        <Record Type="UI.DataFieldForAction">							
+                            <PropertyValue Property="Label" String="Active"/>					
+                            <PropertyValue Property="Action" String="ZGTW_USERID_REG_GY2_SRV.ZGTW_USERID_REG_GY2_SRV_Entities/Active"/>							
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>							
+                            <PropertyValue Property="Inline" Bool="true"/>							
+                        </Record>							
+                        <Record Type="UI.DataFieldForAction">							
+                            <PropertyValue Property="Label" String="De-active"/>					
+                            <PropertyValue Property="Action" String="ZGTW_USERID_REG_GY2_SRV.ZGTW_USERID_REG_GY2_SRV_Entities/Deactive"/>						
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>						
+                        </Record>							
+                        <Record Type="UI.DataFieldForAction">							
+                            <PropertyValue Property="Label" String="Add"/>					
+                            <PropertyValue Property="Action" String="ZGTW_USERID_REG_GY2_SRV.ZGTW_USERID_REG_GY2_SRV_Entities/Add"/>							
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>							
+                        </Record>							
+                        <Record Type="UI.DataFieldForAction">							
+                            <PropertyValue Property="Label" String="Delete"/>							
+                            <PropertyValue Property="Action" String="ZGTW_USERID_REG_GY2_SRV.ZGTW_USERID_REG_GY2_SRV_Entities/Delete"/>							
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="UserID"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="ValidStart"/>				
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="ValidEnd"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Name"/>					
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Department"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Country"/>					
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Email"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Tel"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="Status"/>							
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="CreateDate"/>					
+                        </Record>							
+                        <Record Type="UI.DataField">							
+                            <PropertyValue Property="Value" Path="ChangeDate"/>							
+                        </Record>							
+                    </Collection>							
+                </Annotation>                            							
+            </Annotations>							
+        </Schema>							
+    </edmx:DataServices>							
 </edmx:Edmx>

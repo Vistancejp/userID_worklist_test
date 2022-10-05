@@ -134,6 +134,28 @@
                                 "useDateRange": true
                             }
                         },
+                        "quickVariantSelectionX":{
+                            "showCounts": true,
+                            "variants":{
+                                "1":{
+                                    "key": "All",
+                                    "entityset":"ZV_TEST_USERID_REG",
+                                    "annotationPath":"com.sap.vocabularies.UI.v1.SelectionVariant#All",
+                                    "tableSettings":{
+                                        "multiSelect":true
+                                    }
+                                },
+                             "2":{
+                                        "key": "Inactive",
+                                        "entityset":"ZV_TEST_USERID_REG",
+                                        "annotationPath":"com.sap.vocabularies.UI.v1.SelectionVariant#Inactive",
+                                        "tableSettings":{
+                                            "multiSelect":true
+                                        }
+                                }
+                            }
+                        },
+
                         "tableSettings": {
                             "multiSelect": true
                         }
